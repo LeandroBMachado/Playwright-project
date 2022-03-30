@@ -55,4 +55,10 @@ public class GiuSteps {
 
         homePageGIU.unimed1();
     }
+
+    @E("clico no menu {string}")
+    public void clicoNoMenu(String arg0) {
+
+        homePageGIU.menuAplicacoes();
+    }
 }

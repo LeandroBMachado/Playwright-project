@@ -13,4 +13,6 @@
       Quando eu clico no botao "Entrar"
       Entao eu valido que fiz login
       E clico na unimed 1
+      E clico no menu "Suas aplicações"
+
 

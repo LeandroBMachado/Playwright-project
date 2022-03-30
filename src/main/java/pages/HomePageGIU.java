@@ -52,4 +52,9 @@ public class HomePageGIU {
 
         web().getPage().click(unimed1acessar);
     }
+
+    public void menuAplicacoes() {
+
+        web().getPage().click("//h2[@class='fonte-primaria medio negrito'][contains(.,'Suas aplicações')]");
+    }
 }
