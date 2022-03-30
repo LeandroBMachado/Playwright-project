@@ -1,0 +1,28 @@
+# Usage:
+#   Run and delete container, imagens and volumes after execution
+#   docker-compose -f docker-compose-cross-browser.yml up && docker-compose -f docker-compose-cross-browser.yml rm -fsv && docker image prune -f -a
+#   docker-compose up --force-recreate
+#   docker-compose up --force-recreate --build -d
+#   docker-compose stop
+version: '3'
+
+services:
+  #--------------#
+  chromium:
+    volumes:
+      - ./target/chromium:/usr/target
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    container_name: playwright_chromium
+    network_mode: "host"
+    command: mvn test "-Dcucumber.options=--tags '@login'" -Denv=des -Dbrowser=chromium -Dheadless=true
+  firefox:
+    volumes:
+      - ./target/firefox:/usr/target
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    container_name: playwright_firefox
+    network_mode: "host"
+    command: mvn test "-Dcucumber.options=--tags '@login'" -Denv=des -Dbrowser=firefox -Dheadless=true

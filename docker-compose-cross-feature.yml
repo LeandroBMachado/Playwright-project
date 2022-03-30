@@ -1,0 +1,28 @@
+# Usage:
+#   Run and delete container, imagens and volumes after execution
+#   docker-compose -f docker-compose-cross-browser.yml up && docker-compose -f docker-compose-cross-browser.yml rm -fsv && docker image prune -f -a
+#   docker-compose up --force-recreate
+#   docker-compose up --force-recreate --build -d
+#   docker-compose stop
+version: '3'
+
+services:
+  #--------------#
+  login_positivo:
+    volumes:
+      - ./target/login_positivo:/usr/target
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    container_name: playwright_login_positivo
+    network_mode: "host"
+    command: mvn test "-Dcucumber.options=--tags '@Positivo'" -Denv=des -Dbrowser=chromium -Dheadless=true
+  login_negativo:
+    volumes:
+      - ./target/login_negativo:/usr/target
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    container_name: playwright_login_negativo
+    network_mode: "host"
+    command: mvn test "-Dcucumber.options=--tags '@Negativo'" -Denv=des -Dbrowser=chromium -Dheadless=true

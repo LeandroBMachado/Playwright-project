@@ -1,0 +1,8 @@
+
+credenciais validas:
+  usuario: "teste123@teste.com.br"
+  senha: "1234"
+
+credenciais invalidas:
+  usuario: "teste@teste.com.br"
+  senha: "1234"
